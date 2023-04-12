@@ -15,5 +15,5 @@ const SocketIO = require('socket.io')
 const io = SocketIO(server)
 //webSockets
 io.on('connection', (socket) => {
-    console.log('new connection' + socket.id)
+    console.log('new connection ' + socket.id)
 })
