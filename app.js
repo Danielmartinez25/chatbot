@@ -14,6 +14,6 @@ const server = app.listen(port, function () {
 const SocketIO = require('socket.io')
 const io = SocketIO(server)
 //webSockets
-io.on('connection', () => {
-    console.log('new connection')
+io.on('connection', (socket) => {
+    console.log('new connection' + socket.id)
 })
