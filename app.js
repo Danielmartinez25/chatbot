@@ -18,9 +18,11 @@ io.on('connection', (socket) => {
     socket.on('chat:message',(data) =>{
 
         io.socket.emit('chat:message',data)
-        
+
     })
     socket.on('chat:typing',(data)=>{
+
         socket.broadcast.emit('chat:typing',data)
+        
     })
 })
