@@ -15,5 +15,12 @@ const SocketIO = require('socket.io')
 const io = SocketIO(server)
 //webSockets
 io.on('connection', (socket) => {
-    console.log('new connection ' + socket.id)
+    socket.on('chat:message',(data) =>{
+
+        io.socket.emit('chat:message',data)
+        
+    })
+    socket.on('chat:typing',(data)=>{
+        socket.broadcast.emit('chat:typing',data)
+    })
 })
