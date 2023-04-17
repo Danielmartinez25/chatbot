@@ -15,9 +15,11 @@ message.addEventListener('keypress', function () {
     socket.emit('chat:typing', username.value)
 })
 socket.on('chat:message',function(data){
-    
+
     actions.innerHTML = '';
+
     output.innerHTML += `<p>
+    
     <strong>${data.username}</strong>: ${data.message}
     </p>`
 })
