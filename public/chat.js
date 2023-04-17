@@ -5,16 +5,16 @@ const btn = document.getElementById("send");
 const output = document.getElementById("output");
 const actions = document.getElementById("actions");
 
-btn.addEventListener('click', function(){
+btn.addEventListener('click', ()=>{
     socket.emit('chat:message',{
         message: message.value,
         username: username.value
     })
 })
-message.addEventListener('keypress', function () {
+message.addEventListener('keypress',  ()=> {
     socket.emit('chat:typing', username.value)
 })
-socket.on('chat:message',function(data){
+socket.on('chat:message',(data)=>{
 
     actions.innerHTML = '';
 
@@ -23,6 +23,6 @@ socket.on('chat:message',function(data){
     <strong>${data.username}</strong>: ${data.message}
     </p>`
 })
-socket.on('chat:typing', function(data){
+socket.on('chat:typing', (data)=>{
     actions.innerHTML = `<p><em>${data} is a typing a message</em></p>`
 })
